@@ -1,24 +1,31 @@
-# README
+# challenge
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# Development
+To work on the project locally ensure you have the following dependencies first:
+- Rails 5.2
+- Ruby 2.4
 
-Things you may want to cover:
+Then build the project by performing the following steps:
+1. Clone the project
+   ```bash
+   git clone https://github.com/ItsMeWithTheFace/challenge.git
+   ```
+2. Install dependencies
+   ```bash
+   cd challenge/
+   bundle install
+   ```
+3. Run the migrations
+   ```bash
+   rails db:migrate
+   ```
+4. Run the tests
+   ```bash
+   bundle exec rspec
+   ```
+5. Start the local server
+   ```bash
+   rails s
+   ```
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+which will create a server running on `localhost:3000`
