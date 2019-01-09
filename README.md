@@ -1,6 +1,6 @@
 # challenge
 
-# Development
+## Development
 To work on the project locally ensure you have the following dependencies first:
 - Rails 5.2
 - Ruby 2.4
