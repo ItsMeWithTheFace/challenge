@@ -10,19 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_08_170052) do
+ActiveRecord::Schema.define(version: 2019_01_08_165722) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "carts", force: :cascade do |t|
     t.boolean "fulfilled"
-    t.integer "user_id"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_carts_on_user_id"
   end
 
   create_table "carts_products", id: false, force: :cascade do |t|
-    t.integer "cart_id"
-    t.integer "product_id"
+    t.bigint "cart_id"
+    t.bigint "product_id"
     t.index ["cart_id"], name: "index_carts_products_on_cart_id"
     t.index ["product_id"], name: "index_carts_products_on_product_id"
   end
@@ -44,4 +47,7 @@ ActiveRecord::Schema.define(version: 2019_01_08_170052) do
     t.index ["email"], name: "index_users_on_email"
   end
 
+  add_foreign_key "carts", "users"
+  add_foreign_key "carts_products", "carts"
+  add_foreign_key "carts_products", "products"
 end
