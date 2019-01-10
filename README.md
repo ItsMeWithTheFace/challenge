@@ -16,15 +16,16 @@ Then build the project by performing the following steps:
    cd challenge/
    bundle install
    ```
-3. Run the migrations
+3. Update `config/database.yml` with your local postgres database parameters
+4. Run the migrations
    ```bash
    rails db:migrate
    ```
-4. Run the tests
+5. Run the tests
    ```bash
    bundle exec rspec
    ```
-5. Start the local server
+6. Start the local server
    ```bash
    rails s
    ```
