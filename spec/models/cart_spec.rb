@@ -5,6 +5,5 @@ RSpec.describe Cart, type: :model do
   # ensure Cart model has a m:m relationship with the Product model
   it { should have_and_belong_to_many(:product) }
   it { should belong_to(:user) }
-  # Validation tests
-  it { should validate_presence_of(:fulfilled) }
+
 end
