@@ -20,6 +20,7 @@ class CartController < ApplicationController
     cart = Cart.find(params[:id])
     success = true
 
+    # Purchase all items in cart as one transaction
     begin
       Product.transaction do
         cart.product.each do |product|
@@ -56,6 +57,8 @@ class CartController < ApplicationController
   # PUT /cart/:id/add/:product_id
   def add_product
     cart = Cart.find(params[:id])
+    
+    # only update cart that's yours
     if cart.user_id == current_user.id
       product = Product.find(params[:product_id])
       cart.product << Product.find(params[:product_id])
@@ -68,6 +71,8 @@ class CartController < ApplicationController
   # PUT /cart/:id/remove/:product_id
   def remove_product
     cart = Cart.find(params[:id])
+
+    # only update cart that's yours
     if cart.user_id == current_user.id
       cart.product.delete(Product.find(params[:product_id]))
       json_response({message: "Success"})
