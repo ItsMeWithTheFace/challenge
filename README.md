@@ -4,6 +4,7 @@
 To work on the project locally ensure you have the following dependencies first:
 - Rails 5.2
 - Ruby 2.4
+- PostgreSQL 11.1
 
 Then build the project by performing the following steps:
 1. Clone the project
