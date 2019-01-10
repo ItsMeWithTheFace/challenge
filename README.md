@@ -31,3 +31,8 @@ Then build the project by performing the following steps:
    ```
 
 which will create a server running on `localhost:3000`
+
+## Documentation
+To view the API documentation for this project see the [GitHub Wiki](https://github.com/ItsMeWithTheFace/challenge/wiki)
+
+Tests are actually located in the `spec` folder instead of `test` (since these use RSpec)
