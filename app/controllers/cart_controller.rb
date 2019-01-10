@@ -21,18 +21,22 @@ class CartController < ApplicationController
     success = true
 
     # Purchase all items in cart as one transaction
-    begin
-      Product.transaction do
-        cart.product.each do |product|
-          curr_product = Product.find(product.id)
-          if (curr_product.inventory_count <= 0)
-            raise "Error"
-          else
-            curr_product.update!(inventory_count: curr_product.inventory_count - 1)
+    if cart.user_id == current_user.id
+      begin
+        Product.transaction do
+          cart.product.each do |product|
+            curr_product = Product.find(product.id)
+            if (curr_product.inventory_count <= 0)
+              raise "Error"
+            else
+              curr_product.update!(inventory_count: curr_product.inventory_count - 1)
+            end
           end
         end
+      rescue Exception
+        success = false
       end
-    rescue Exception
+    else
       success = false
     end
 
@@ -40,7 +44,7 @@ class CartController < ApplicationController
       cart.update(fulfilled: true)
       json_response(cart)
     else
-      json_response({message: "Not enough inventory"}, :not_acceptable)
+      json_response({message: "Not enough inventory or unauthenticated"}, :not_acceptable)
     end
   end
 

@@ -23,7 +23,7 @@ class ProductController < ApplicationController
     json_response(product, :created)
   end
 
-  # PUT /product/:id
+  # PUT /products/:id
   def update_product
     product = Product.find(params[:id])
     product.update(product_params)
